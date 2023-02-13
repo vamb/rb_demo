@@ -1,6 +1,7 @@
 import React from 'antd'
 import styled from "styled-components";
 import ark_caster from '../arkSVGs/ark_caster.svg'
+import HomeMiddle from "./component/HomeMiddle";
 
 const HomePage = () => {
   return (
@@ -18,6 +19,7 @@ const HomePage = () => {
           <img src={require('../arkAgent/casterAMiYa.png')} />
         </div>
       </div>
+      <HomeMiddle />
     </Wrapper>
   )
 }
