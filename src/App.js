@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom"
 import Home from './pages/home'
 import styled from "styled-components";
-import './App.css';
 
 function App() {
   const [ pageSize, setPageSize ] = useState({ width: document.body.scrollWidth, height: document.body.scrollHeight })
@@ -32,7 +31,7 @@ function App() {
       <div className={'main-content'} style={{minHeight: `${pageSize.height}px`}}>
         <Router>
           <div className={'header-content'}>
-            <div className={'side-title'}>RB Demo</div>
+            <div className={'side-title'} onClick={()=>window.location.href = '/'}>RB Demo</div>
             <div className={'router-common'}>
               <div className={checkActive(activeKey, '/home')}>
                 <Link
@@ -80,7 +79,9 @@ const Wrapper = styled('div')`
     display: flex;
     justify-content: space-between;
     .side-title {
-      
+     font-size: 24px;
+     font-weight: 700;
+     cursor: pointer;
     }
   }
   .router-common {
