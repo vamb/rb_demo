@@ -6,6 +6,7 @@ import styled from "styled-components";
 function App() {
   const [ pageSize, setPageSize ] = useState({ width: document.body.scrollWidth, height: document.body.scrollHeight })
   const [ activeKey, setActiveKey ] = useState('/home')
+  const [ btnMaskFloat, setBtnMaskFloat ] = useState(0)
 
   const handleResize=()=>{
     const isClient = typeof window === 'object'
@@ -14,6 +15,21 @@ function App() {
     }
     setPageSize({width: document.body.scrollWidth, height: document.body.scrollHeight})
   }
+
+  const calculateBtnMask = (availableKey) => {
+    switch (availableKey) {
+      case '/home':
+        setBtnMaskFloat(-130)
+        break
+      case '/aboutUs':
+        setBtnMaskFloat(0)
+        break
+    }
+  }
+
+  useEffect(()=>{
+    calculateBtnMask(activeKey)
+  },[activeKey])
 
   useEffect(()=>{
     handleResize()
@@ -33,22 +49,13 @@ function App() {
           <div className={'header-content'}>
             <div className={'side-title'} onClick={()=>window.location.href = '/'}>RB Demo</div>
             <div className={'router-common'}>
-              <div className={checkActive(activeKey, '/home')}>
-                <Link
-                  to={'/home'}
-                  onClick={()=>setActiveKey('/home')}
-                >Home
-                </Link>
-                <div className={'bottom-mark'} />
+              <div className={checkActive(activeKey, '/home')} onClick={()=>setActiveKey('/home')}>
+                <Link to={'/home'} onClick={()=>setActiveKey('/home')}>Home</Link>
               </div>
-              <div className={checkActive(activeKey, '/aboutUs')}>
-                <Link
-                  to={'/aboutUs'}
-                  onClick={()=>setActiveKey('/aboutUs')}
-                >About Us
-                </Link>
-                <div className={'bottom-mark'} />
+              <div className={checkActive(activeKey, '/aboutUs')} onClick={()=>setActiveKey('/aboutUs')}>
+                <Link to={'/aboutUs'} onClick={()=>setActiveKey('/aboutUs')}>About Us</Link>
               </div>
+              <div className={'bottom-mark'} style={{transform: `translateX(${btnMaskFloat}px)`}} />
             </div>
           </div>
 
@@ -87,19 +94,30 @@ const Wrapper = styled('div')`
   .router-common {
     display: flex;
     flex-direction: row;
+    position: relative;
     & > div {
       min-width: 120px;
       max-width: 120px;
-      background: lightgreen;
       text-align: center;
       margin-right: 10px;
     }
   }
   .router-common > .router-unit-active > a, .router-common > .router-unit > a {
-    // color: #203d50
     color: #4b6e84;
     font-size: 24px;
     font-weight: 500;
+    cursor: pointer;
+  }
+  .bottom-mark {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #1890ff !important;
+    bottom: 0;
+    right: 0;
+    transition-duration: 0.2s, 0.2s;
+    transition-delay: 0s, 0s;
+    transition-timing-function: ease-in-out, ease-in-out;
   }
 `
 
