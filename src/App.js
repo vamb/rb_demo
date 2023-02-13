@@ -23,19 +23,41 @@ function App() {
     return ()=> window.removeEventListener('resize', handleResize)
   },[])
 
+  const checkActive = (availableKey, currentKey) =>{
+    return availableKey === currentKey? 'router-unit-active': 'router-unit'
+  }
+
   return (
     <Wrapper>
       <div className={'main-content'} style={{minHeight: `${pageSize.height}px`}}>
         <Router>
-          <Link
-            to={'/home'}
-            onClick={()=>setActiveKey('/home')}
-          >
-            Home
-          </Link>
-          {/* 重定向默认页面到home页面 */}
-          <Redirect from={'/'} to={'/home'} />
-          <Route path={'/home'}  exact component={Home} />
+          <div className={'header-content'}>
+            <div className={'side-title'}>RB Demo</div>
+            <div className={'router-common'}>
+              <div className={checkActive(activeKey, '/home')}>
+                <Link
+                  to={'/home'}
+                  onClick={()=>setActiveKey('/home')}
+                >Home
+                </Link>
+                <div className={'bottom-mark'} />
+              </div>
+              <div className={checkActive(activeKey, '/aboutUs')}>
+                <Link
+                  to={'/aboutUs'}
+                  onClick={()=>setActiveKey('/aboutUs')}
+                >About Us
+                </Link>
+                <div className={'bottom-mark'} />
+              </div>
+            </div>
+          </div>
+
+          <div className={'page-content'}>
+            {/* 重定向默认页面到home页面 */}
+            <Redirect from={'/'} to={'/home'} />
+            <Route path={'/home'}  exact component={Home} />
+          </div>
         </Router>
       </div>
     </Wrapper>
@@ -47,9 +69,36 @@ const Wrapper = styled('div')`
   height: 100%;
   width: 100%;
   .main-content {
-    background: #fff;
     width: 1200px;
     margin: 0 auto;
+    background-image: linear-gradient(lightblue 10%, #fff 90%);
+    display: flex;
+    padding: 30px 100px 50px 100px;
+    flex-direction: column;
+  }
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    .side-title {
+      
+    }
+  }
+  .router-common {
+    display: flex;
+    flex-direction: row;
+    & > div {
+      min-width: 120px;
+      max-width: 120px;
+      background: lightgreen;
+      text-align: center;
+      margin-right: 10px;
+    }
+  }
+  .router-common > .router-unit-active > a, .router-common > .router-unit > a {
+    // color: #203d50
+    color: #4b6e84;
+    font-size: 24px;
+    font-weight: 500;
   }
 `
 
