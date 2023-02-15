@@ -4,6 +4,7 @@ import ark_caster from '../assets/arkSVGs/ark_caster.svg'
 import HomeMiddle from "./component/HomeMiddle";
 import HomeConstant from "./HomeConstant";
 import HomeMiddle2 from "./component/HomeMiddle2";
+import HomeImgGroup from "./component/HomeImgGroup";
 
 const HomePage = () => {
   return (
@@ -26,6 +27,7 @@ const HomePage = () => {
       </div>
       <HomeMiddle2 />
       <HomeMiddle />
+      <HomeImgGroup />
     </Wrapper>
   )
 }

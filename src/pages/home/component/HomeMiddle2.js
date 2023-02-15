@@ -51,6 +51,7 @@ const Wrapper = styled('div')`
   grid-template-columns: repeat(5, 1fr);
   width: 100%;
   grid-gap: 10px;
+  margin-top: 20px;
   .logo-unit {
     width: 100%;
     overflow: hidden;
