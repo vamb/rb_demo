@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom"
 import Home from './pages/home'
+import PageBottom from "./pages/home/PageBottom";
 import styled from "styled-components";
 
 function App() {
@@ -58,13 +59,13 @@ function App() {
               <div className={'bottom-mark'} style={{transform: `translateX(${btnMaskFloat}px)`}} />
             </div>
           </div>
-
           <div className={'page-content'}>
             {/* 重定向默认页面到home页面 */}
             <Redirect from={'/'} to={'/home'} />
             <Route path={'/home'}  exact component={Home} />
           </div>
         </Router>
+        <PageBottom />
       </div>
     </Wrapper>
   );
