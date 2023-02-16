@@ -12,11 +12,12 @@ function App() {
 
   const handleResize=()=>{
     const isClient = typeof window === 'object'
-    const pageBottomObj = document.querySelector('.page-bottom')
+    // const pageBottomObj = document.querySelector('.page-bottom') //140px height
+    // console.log('width, height, pageBottomHeight', document.body.scrollWidth, document.body.scrollHeight, pageBottomObj?.scrollHeight)
     if(!isClient){
       return
     }
-    setPageSize({width: document.body.scrollWidth, height: document.body.scrollHeight-pageBottomObj.scrollHeight})
+    setPageSize({width: document.body.scrollWidth, height: document.body.scrollHeight})
   }
 
   const calculateBtnMask = (availableKey) => {
@@ -31,6 +32,7 @@ function App() {
   }
 
   useEffect(()=>{
+    handleResize()
     calculateBtnMask(activeKey)
   },[activeKey])
 
@@ -47,7 +49,10 @@ function App() {
 
   return (
     <Wrapper>
-      <div className={'main-content'} style={{minHeight: `${pageSize.height}px`}}>
+      <div
+        className={'main-content'}
+        style={{minHeight: `${pageSize.height}px`}}
+      >
         <Router>
           <div className={'header-content'}>
             <div className={'side-title'} onClick={()=>window.location.href = '/'}>RB Demo</div>
