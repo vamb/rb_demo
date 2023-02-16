@@ -83,12 +83,14 @@ const Wrapper = styled('div')`
   background: #ebedf0;
   height: 100%;
   width: 100%;
+  box-sizing: border-box;
   .main-content {
+    box-sizing: border-box;
     width: 1200px;
     margin: 0 auto;
     background-image: linear-gradient(lightblue 10%, #fff 90%);
     display: flex;
-    padding: 30px 100px 50px 100px;
+    padding: 30px 3% 50px 3%;
     flex-direction: column;
   }
   .header-content {
@@ -127,6 +129,41 @@ const Wrapper = styled('div')`
     transition-duration: 0.2s, 0.2s;
     transition-delay: 0s, 0s;
     transition-timing-function: ease-in-out, ease-in-out;
+  }
+  @media only screen and (min-width: 1000px) and (max-width: 1200px) {
+    .main-content {
+      background: blueviolet;
+      padding-left: 1%;
+      padding-right: 1%;
+      width: 100%;
+    }
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1000px) {
+    .main-content {
+      background: lightgreen;
+      padding-left: 10px;
+      padding-right: 10px;
+      width: 100%;
+    }
+    .home-header-content {
+      
+    }
+  }
+  @media only screen and (min-width: 500px) and (max-width: 768px) {
+    .main-content {
+      background: pink;
+      padding-left: 10px;
+      padding-right: 10px;
+      width: 100%;
+    }
+  }
+  @media only screen and (min-width: 320px) and (max-width: 500px) {
+    .main-content {
+      background: lightyellow;
+      padding-left: 10px;
+      padding-right: 10px;
+      width: 100%;
+    }
   }
 `
 

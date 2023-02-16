@@ -9,7 +9,7 @@ import HomeImgGroup from "./component/HomeImgGroup";
 const HomePage = () => {
   return (
     <Wrapper>
-      <div className={'header-content'}>
+      <div className={'home-header-content'}>
         <div className={'info-content'}>
           <div className={'info-title'}>
             {HomeConstant.HEADER_CONTEXT.INFO_DATA.title}&nbsp;
@@ -33,12 +33,12 @@ const HomePage = () => {
 }
 
 const Wrapper = styled('div')`
-  .header-content {
+  .home-header-content {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    // background: lightyellow;
     .info-content {
+      background: lightyellow;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -69,6 +69,7 @@ const Wrapper = styled('div')`
       }
     }
     .img-content {
+      background: lightgreen;
       & > img {
         height: 700px
       }
