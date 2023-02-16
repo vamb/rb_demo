@@ -51,7 +51,7 @@ function App() {
     <Wrapper>
       <div
         className={'main-content'}
-        style={{minHeight: `${pageSize.height}px`}}
+        // style={{minHeight: `${pageSize.height}px`}}
       >
         <Router>
           <div className={'header-content'}>
