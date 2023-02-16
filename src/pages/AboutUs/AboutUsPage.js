@@ -1,17 +1,16 @@
 import React from 'react'
 import styled from "styled-components";
 
-const PageBottom = () => {
-
+const AboutUsPage = () => {
   return (
     <Wrapper>
-      PageBottom
+      AboutUsPage
     </Wrapper>
   )
 }
 
 const Wrapper = styled('div')`
-  margin: 30px 0 50px 0;
+
 `
 
-export default PageBottom
+export default AboutUsPage

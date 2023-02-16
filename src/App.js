@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom"
 import Home from './pages/home'
-import PageBottom from "./pages/home/PageBottom";
+import PageBottom from "./pages/PageBottom";
 import styled from "styled-components";
+import AboutUsPage from "./pages/AboutUs/AboutUsPage";
 
 function App() {
   const [ pageSize, setPageSize ] = useState({ width: document.body.scrollWidth, height: document.body.scrollHeight })
@@ -11,10 +12,11 @@ function App() {
 
   const handleResize=()=>{
     const isClient = typeof window === 'object'
+    const pageBottomObj = document.querySelector('.page-bottom')
     if(!isClient){
       return
     }
-    setPageSize({width: document.body.scrollWidth, height: document.body.scrollHeight})
+    setPageSize({width: document.body.scrollWidth, height: document.body.scrollHeight-pageBottomObj.scrollHeight})
   }
 
   const calculateBtnMask = (availableKey) => {
@@ -61,12 +63,13 @@ function App() {
           </div>
           <div className={'page-content'}>
             {/* 重定向默认页面到home页面 */}
-            <Redirect from={'/'} to={'/home'} />
+            {/*<Redirect from={'/'} to={'/home'} />*/}
             <Route path={'/home'}  exact component={Home} />
+            <Route path={'/aboutUs'} exact component={AboutUsPage} />
           </div>
         </Router>
-        <PageBottom />
       </div>
+      <PageBottom />
     </Wrapper>
   );
 }
