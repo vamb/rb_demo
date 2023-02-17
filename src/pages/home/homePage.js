@@ -34,15 +34,15 @@ const HomePage = () => {
 
 const Wrapper = styled('div')`
   .home-header-content {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     .info-content {
-      background: lightyellow;
+      flex-grow: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 0 160px;
+      padding: 0 20%;
       .info-title {
         font-size: 48px;
         font-weight: 700;
@@ -69,7 +69,9 @@ const Wrapper = styled('div')`
       }
     }
     .img-content {
-      background: lightgreen;
+      flex-grow: 1;
+      display: flex;
+      place-content: center;
       & > img {
         height: 700px
       }

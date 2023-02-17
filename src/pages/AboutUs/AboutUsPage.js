@@ -6,7 +6,7 @@ import ark_warrior from "../assets/arkSVGs/ark_warrior.svg";
 const AboutUsPage = () => {
   return (
     <Wrapper>
-      <div className={'header-content'}>
+      <div className={'home-header-content'}>
         <div className={'info-content'}>
           <div className={'info-title'}>
             {AboutUsConstant.HEADER_CONTEXT.INFO_DATA.title}&nbsp;
@@ -27,16 +27,17 @@ const AboutUsPage = () => {
 }
 
 const Wrapper = styled('div')`
-  .header-content {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    // background: lightyellow;
+  .home-header-content {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     .info-content {
+      flex-grow: 1;
+      // background: lightyellow;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 0 160px;
+      padding: 0 20%;
       .info-title {
         font-size: 48px;
         font-weight: 700;
@@ -63,6 +64,10 @@ const Wrapper = styled('div')`
       }
     }
     .img-content {
+      flex-grow: 1;
+      // background: lightgreen;
+      display: flex;
+      place-content: center;
       & > img {
         height: 700px
       }

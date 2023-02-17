@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom
 import Home from './pages/home'
 import PageBottom from "./pages/PageBottom";
 import styled from "styled-components";
-import AboutUsPage from "./pages/AboutUs/AboutUsPage";
+import AboutUsPage from "./pages/AboutUs";
 
 function App() {
   const [ pageSize, setPageSize ] = useState({ width: document.body.scrollWidth, height: document.body.scrollHeight })
@@ -84,6 +84,7 @@ const Wrapper = styled('div')`
   height: 100%;
   width: 100%;
   box-sizing: border-box;
+  min-width: 320px !important;
   .main-content {
     box-sizing: border-box;
     width: 1200px;
@@ -97,9 +98,9 @@ const Wrapper = styled('div')`
     display: flex;
     justify-content: space-between;
     .side-title {
-     font-size: 24px;
-     font-weight: 700;
-     cursor: pointer;
+      font-size: 24px;
+      font-weight: 700;
+      cursor: pointer;
     }
   }
   .router-common {
@@ -132,7 +133,6 @@ const Wrapper = styled('div')`
   }
   @media only screen and (min-width: 1000px) and (max-width: 1200px) {
     .main-content {
-      background: blueviolet;
       padding-left: 1%;
       padding-right: 1%;
       width: 100%;
@@ -140,7 +140,6 @@ const Wrapper = styled('div')`
   }
   @media only screen and (min-width: 768px) and (max-width: 1000px) {
     .main-content {
-      background: lightgreen;
       padding-left: 10px;
       padding-right: 10px;
       width: 100%;
@@ -148,21 +147,113 @@ const Wrapper = styled('div')`
     .home-header-content {
       
     }
+    .home-middle {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  @media only screen and (min-width: 660px) and (max-width: 768px) {
+  .home-header-content > .info-content {
+      padding: 0 20px;
+    }
+  }
+  @media only screen and (min-width: 500px) and (max-width: 660px) {
+    .home-header-content {
+      grid-template-columns: repeat(1, 1fr);
+      & > .info-content {
+        padding: 0 20px;
+      }
+    }
   }
   @media only screen and (min-width: 500px) and (max-width: 768px) {
     .main-content {
-      background: pink;
       padding-left: 10px;
       padding-right: 10px;
       width: 100%;
     }
+    .home-middle {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .middle-content {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .img-group {
+      grid-template-columns: repeat(2, 1fr);
+      & > .one {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 2;
+      }
+      & > .two {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 2;
+      }
+      & > .three {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 2;
+        grid-row-end: 3;
+      }
+      & > .four {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 3;
+      }
+      & > .five {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 3;
+        grid-row-end: 4;
+      }
+    }
   }
   @media only screen and (min-width: 320px) and (max-width: 500px) {
     .main-content {
-      background: lightyellow;
       padding-left: 10px;
       padding-right: 10px;
       width: 100%;
+    }
+    .home-middle {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    .middle-content {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    .img-group {
+      grid-template-columns: repeat(1, 1fr);
+      & > .one {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 2;
+      }
+      & > .two {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 2;
+        grid-row-end: 3;
+      }
+      & > .three {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 3;
+        grid-row-end: 4;
+      }
+      & > .four {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 4;
+        grid-row-end: 5;
+      }
+      & > .five {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 5;
+        grid-row-end: 6;
+      }
     }
   }
 `
