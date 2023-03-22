@@ -37,7 +37,9 @@ function App() {
   },[activeKey])
 
   useEffect(()=>{
-    handleResize()
+    if(window.location.pathname === '/'){
+      window.location.href = '/home'
+    }
     window.addEventListener('resize', handleResize)
     setActiveKey(window.location.pathname)
     return ()=> window.removeEventListener('resize', handleResize)
