@@ -1,12 +1,35 @@
-import React from 'antd'
+import React, { useEffect } from 'react'
 import styled from "styled-components";
 import ark_caster from '../assets/arkSVGs/ark_caster.svg'
 import HomeMiddle from "./component/HomeMiddle";
 import HomeConstant from "./HomeConstant";
 import HomeMiddle2 from "./component/HomeMiddle2";
 import HomeImgGroup from "./component/HomeImgGroup";
+import { getCall, postCall } from "../service/API"
 
 const HomePage = () => {
+
+  const thisIsGetCall = params => {
+    getCall(params).then(res=>{
+      console.log('getCall res', res)
+    }).catch(err=>{
+      console.error('getCall err', err)
+    })
+  }
+
+  const thisIsPostCall = data => {
+    postCall(data).then(res=>{
+      console.log('postCall res', res)
+    }).catch(err=>{
+      console.error('postCall err', err)
+    })
+  }
+
+  useEffect(()=>{
+    thisIsGetCall({testData: 'thisIsGetCallData'})
+    thisIsPostCall({testData: 'thisIsPostCallData'})
+  },[])
+
   return (
     <Wrapper>
       <div className={'home-header-content'}>
