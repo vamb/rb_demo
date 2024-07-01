@@ -37,13 +37,17 @@ function App() {
   },[activeKey])
 
   useEffect(()=>{
-    if(window.location.pathname === '/'){
-      window.location.href = '/home'
-    }
+    handleResize()
     window.addEventListener('resize', handleResize)
     setActiveKey(window.location.pathname)
     return ()=> window.removeEventListener('resize', handleResize)
   },[])
+
+  useEffect(()=>{
+    if("/" === window.location.pathname) {
+      window.location.href = "/home"
+    }
+  },[window.location.pathname])
 
   const checkActive = (availableKey, currentKey) =>{
     return availableKey === currentKey? 'router-unit-active': 'router-unit'
